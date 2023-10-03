@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { SignInButton } from "./components/buttons";
 
 
 const NavMenu = () => {
@@ -23,6 +24,9 @@ const NavMenu = () => {
             </li>
             <li className=" h-12 flex items-center p-1">
                 <Link href={'/users'}>Users</Link>
+            </li>
+            <li className=" h-12 flex items-center p-1">
+                <SignInButton/>
             </li>
         </ul>
 

@@ -12,6 +12,6 @@ const posts = [
 
   export async function GET() {
 
-    const session = await getServerSession()
+    const session = await getServerSession() // server-side authentication
     return NextResponse.json(posts)
   }
