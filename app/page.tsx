@@ -1,10 +1,22 @@
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
 
 
 
-export default function Home() {
+export default async function Home() {
+
+  const  session  = await getServerSession()
+  if (!session) {
+    redirect('/api/auth/signin')
+
+    /*
+    over here we can either use a redirect or return a 'must be logged in' message
+    */
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      home page
+      This is the home page
     </main>
   )
 }
