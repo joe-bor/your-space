@@ -3,7 +3,6 @@ import UserCard from "../components/UserCard"
 
 
 async function UsersPage() {
-
     const users = await prisma.user.findMany()
 
     return (

@@ -13,7 +13,7 @@ export default function UserCard({ id, name, age, image }: Props) {
         <img  src={image ?? '/mememan.webp'} alt={`${name}'s profile image`} />
         <div className=" bg-blue-300 w-full">
             <h3>
-                <Link href={`/users/${id}`}>{name}</Link>
+                <Link  className=' text-blue-600 hover:underline' href={`/users/${id}`}>{name}</Link>
             </h3>
             <p>Age: {age ?? 'undefined'}</p>
         </div>
