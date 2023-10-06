@@ -1,5 +1,7 @@
 'use client'
 
+import React from "react";
+
 interface Props {
     user: {
         id: string;
@@ -13,10 +15,34 @@ interface Props {
 }
 
 export default function ProfileForm({ user }: Props) {
+
+ async function updateUser(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+
+    const body = {
+        name: formData.get('name'),
+        bio: formData.get('bio'),
+        age: formData.get('age'),
+        image: formData.get('image')
+    }
+
+    const res = await fetch('/api/user', {
+        method: 'PUT',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    await res.json()
+ }
+
   return (
     <div>
         <h2>Edit Your Profile</h2>
-        <form >
+        <form onSubmit={updateUser} >
             <label htmlFor="name">Name: </label>
             <input type="text" name="name" defaultValue={user?.name ?? ''} />
             <label htmlFor="bio">Bio: </label>

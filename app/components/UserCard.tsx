@@ -15,7 +15,7 @@ export default function UserCard({ id, name, age, image }: Props) {
             <h3>
                 <Link  className=' text-blue-600 hover:underline' href={`/users/${id}`}>{name}</Link>
             </h3>
-            <p>Age: {age ?? 'undefined'}</p>
+            <p>Age: {age ?? ''}</p>
         </div>
     </div>
   )
