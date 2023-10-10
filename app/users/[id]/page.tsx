@@ -21,7 +21,7 @@ export default async function UserProfilePage({ params }: Props) {
 
   return (
     <div className=" flex flex-col justify-center items-center" >
-        <img src={image ?? '/mememan.webp'} alt={`${name}'s profile image`} />
+        <img src={image ?? '/user-icon.svg'} alt={`${name}'s profile image`} />
         <h3>{name}</h3>
         <p>Age: {age}</p>
         <p>Bio: {bio}</p>

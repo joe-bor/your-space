@@ -10,7 +10,7 @@ interface Props {
 export default function UserCard({ id, name, age, image }: Props) {
   return (
     <div className=" bg-violet-500 w-full border border-red-600 rounded-lg grid-rows-2  ">
-        <img  src={image ?? '/mememan.webp'} alt={`${name}'s profile image`} />
+        <img  src={image ?? '/user-icon.svg'} alt={`${name}'s profile image`} />
         <div className=" bg-blue-300 w-full">
             <h3>
                 <Link  className=' text-blue-600 hover:underline' href={`/users/${id}`}>{name}</Link>
