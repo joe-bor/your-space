@@ -9,7 +9,7 @@ export async function POST(req: Request){
     const session = await getServerSession(authOptions)
     const currentUserEmail = session?.user?.email!
     // extract user id to be followed ( sent via request object )
-    const { targetId } = await req.json() 
+    const { targetUserId } = await req.json() 
 
     // get current user id by querying db
     const currentUserId = await prisma.user
@@ -20,7 +20,7 @@ export async function POST(req: Request){
     const record = await prisma.follows.create({
         data: {
             followerId: currentUserId,
-            followingId: targetId
+            followingId: targetUserId
         }
     })
 
