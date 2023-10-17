@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     // extract name, email, password from the request sent
     const data = await request.json();
     const { email, password } = data;
-    console.log(data);
+    console.log({ data });
 
     // check if user already exist in the database
     const user = await prisma.user.findUnique({ where: { email: email } });

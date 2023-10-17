@@ -14,7 +14,7 @@ export default function RegisterForm() {
         password: formData.get("password"),
       }),
     });
-    console.log(response);
+    console.log({ response });
   };
 
   return (
