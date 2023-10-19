@@ -1,8 +1,17 @@
 "use client";
 
 import { FormEvent } from "react";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function RegisterForm() {
+  const { data: session, status } = useSession();
+  console.log(session, status);
+
+  if (status === "authenticated") {
+    redirect("/");
+  }
+
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -15,12 +24,26 @@ export default function RegisterForm() {
       }),
     });
     console.log({ response });
+    //TODO: sign in newly registered user
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <input type="text" name="email" placeholder="email" />
-      <input type="password" name="password" placeholder="password" />
+    <form
+      className=" flex flex-col justify-center items-center"
+      onSubmit={handleFormSubmit}
+    >
+      <input
+        className="border border-black text-black m-2 p-2"
+        type="text"
+        name="email"
+        placeholder="email"
+      />
+      <input
+        className="border border-black text-black m-2 p-2"
+        type="password"
+        name="password"
+        placeholder="password"
+      />
       <button type="submit">Register</button>
     </form>
   );

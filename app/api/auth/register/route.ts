@@ -19,7 +19,7 @@ export async function POST(request: Request) {
           password: hashedPassword,
         },
       });
-      return NextResponse.json({ message: "User created" });
+      return NextResponse.json(newUser);
     }
     // if not, create a new user using credentials provided
     // make sure password is hashed
