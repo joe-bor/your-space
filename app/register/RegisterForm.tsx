@@ -1,10 +1,16 @@
 "use client";
 
-import { FormEvent } from "react";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { Dispatch, FormEvent, SetStateAction } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 
-export default function RegisterForm() {
+interface ComponentProps {
+  setIsRegisterFormOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function RegisterForm({
+  setIsRegisterFormOpen,
+}: ComponentProps) {
   const { data: session, status } = useSession();
   console.log(session, status);
 
@@ -24,7 +30,10 @@ export default function RegisterForm() {
       }),
     });
     console.log({ response });
-    //TODO: sign in newly registered user
+    // switch to login form
+    if (response) {
+      setIsRegisterFormOpen(false);
+    }
   };
 
   return (

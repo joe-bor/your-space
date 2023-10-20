@@ -11,7 +11,11 @@ export default function RegisterPage() {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex items-center justify-center flex-col w-1/3 border border-red-400 p-8">
         <h1 className="text-center">Welcome to `Your-Space`</h1>
-        {isRegisterFormOpen ? <RegisterForm /> : <LoginForm />}
+        {isRegisterFormOpen ? (
+          <RegisterForm setIsRegisterFormOpen={setIsRegisterFormOpen} />
+        ) : (
+          <LoginForm />
+        )}
         {isRegisterFormOpen ? (
           <p>
             Already have an account?{" "}
