@@ -24,23 +24,27 @@ export default function LoginForm() {
   }
 
   return (
-    <form
-      className="flex flex-col items-center justify-center gap-2"
-      onSubmit={handleLoginSubmit}
-    >
-      <input
-        className="border border-black text-black m-2 p-2"
-        type="text"
-        name="email"
-        placeholder="email"
-      />
-      <input
-        className="border border-black text-black m-2 p-2"
-        type="password"
-        name="password"
-        placeholder="password"
-      />
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <form
+        className="flex flex-col items-center justify-center gap-2"
+        onSubmit={handleLoginSubmit}
+      >
+        <input
+          className="border border-black text-black m-2 p-2"
+          type="text"
+          name="email"
+          placeholder="email"
+        />
+        <input
+          className="border border-black text-black m-2 p-2"
+          type="password"
+          name="password"
+          placeholder="password"
+        />
+        <button type="submit">Login</button>
+      </form>
+
+      <button onClick={() => signIn("github")}>Sign in with github</button>
+    </>
   );
 }
