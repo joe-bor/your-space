@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SignInButton, SignOutButton } from "./components/buttons";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
-const NavMenu = () => {
+const NavMenu = async () => {
+  const session = await getServerSession(authOptions);
   return (
     <nav className=" flex bg-blue-400 text-white h-16 justify-between items-center">
       <Link href={"/"}>
@@ -15,15 +18,19 @@ const NavMenu = () => {
         />
       </Link>
       <ul className=" list-none flex mr-4">
-        <li className=" h-12 flex items-center p-1">
-          <Link href={"about"}>About</Link>
-        </li>
-        <li className=" h-12 flex items-center p-1">
-          <Link href={"/blog"}>Blog</Link>
-        </li>
-        <li className=" h-12 flex items-center p-1">
-          <Link href={"/users"}>Users</Link>
-        </li>
+        {session ? (
+          <>
+            <li className=" h-12 flex items-center p-1">
+              <Link href={"about"}>About</Link>
+            </li>
+            <li className=" h-12 flex items-center p-1">
+              <Link href={"/blog"}>Blog</Link>
+            </li>
+            <li className=" h-12 flex items-center p-1">
+              <Link href={"/users"}>Users</Link>
+            </li>
+          </>
+        ) : null}
         <li className=" h-12 flex items-center p-1">
           <SignInButton />
         </li>
