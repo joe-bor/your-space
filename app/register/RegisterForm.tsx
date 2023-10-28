@@ -42,6 +42,12 @@ export default function RegisterForm({
       onSubmit={handleFormSubmit}
     >
       <input
+        className=" border border-black text-black m-2 p-2"
+        type="text"
+        name="name"
+        placeholder="name"
+      />
+      <input
         className="border border-black text-black m-2 p-2"
         type="text"
         name="email"
